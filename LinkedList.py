@@ -133,13 +133,33 @@ class LinkedList(object):
 
         raise ValueError('Item not found: {}'.format(item))
 
-    def pop(self, idx):
-        node = self.head
-        curr_idx = 0
 
-        while node is not None:
-            if curr_idx == idx:
-                self.delete(node.data)
-                return
-            node = node.next
-            curr_idx += 1
+def test_linked_list():
+    ll = LinkedList()
+    print('list: {}'.format(ll))
+    print('\nTesting append:')
+    for item in ['A', 'B', 'C']:
+        print('append({!r})'.format(item))
+        ll.append(item)
+        print('list: {}'.format(ll))
+
+    print('head: {}'.format(ll.head))
+    print('tail: {}'.format(ll.tail))
+    print('length: {}'.format(ll.length()))
+
+    # Enable this after implementing delete method
+    delete_implemented = False
+    if delete_implemented:
+        print('\nTesting delete:')
+        for item in ['B', 'C', 'A']:
+            print('delete({!r})'.format(item))
+            ll.delete(item)
+            print('list: {}'.format(ll))
+
+        print('head: {}'.format(ll.head))
+        print('tail: {}'.format(ll.tail))
+        print('length: {}'.format(ll.length()))
+
+
+if __name__ == '__main__':
+    test_linked_list()
