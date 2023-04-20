@@ -13,31 +13,31 @@ class Queue:
         return self.items.is_empty()
 
     def enqueue(self, item):
-        # add to the rear/head
-        self.items.prepend(item)
+        # add to the rear/tail
+        self.items.append(item)
 
     def dequeue(self):
         if self.is_empty():
             return None
 
-        # remove from the front/tail
-        front = self.items.tail
+        # remove from the front/head
+        front = self.items.head
         self.items.delete(front.data)
         return front
 
 
 my_queue = Queue()
 
-my_queue.enqueue(100)
-print(my_queue.items)  # [(100)]
+my_queue.enqueue(1)
+print(my_queue.items)  # [(1)]
 
-my_queue.enqueue(5)
-print(my_queue.items)  # [(5) -> (100)]
+my_queue.enqueue(2)
+print(my_queue.items)  # [(1) -> (2)]
 
-my_queue.enqueue(20)
-print(my_queue.items)  # [(20) -> (5) -> (100)]
+my_queue.enqueue(3)
+print(my_queue.items)  # [(1) -> (2) -> (3)]
 
 my_queue.dequeue()
 my_queue.dequeue()
 
-print(my_queue.items)  # [(20)]
+print(my_queue.items)  # [(3)]
